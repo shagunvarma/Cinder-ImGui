@@ -24,7 +24,7 @@ if( NOT TARGET Cinder-ImGui )
 	)
   
   target_include_directories( Cinder-ImGui PUBLIC "${IMGUI_INCLUDE_DIRS}" )
-  target_include_directories(Cinder-ImGuid SYSTEM BEFORE PUBLIC "${CINDER_PATH}/include" )
+  target_include_directories(Cinder-ImGui SYSTEM BEFORE PUBLIC "${CINDER_PATH}/include" )
 
   if( NOT TARGET cinder )
 	include( "${CINDER_PATH}/proj/cmake/configure.cmake" )
