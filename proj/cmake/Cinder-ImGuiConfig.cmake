@@ -1,6 +1,14 @@
 if( NOT TARGET Cinder-ImGui )
   get_filename_component( IMGUI_ROOT_PATH "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE )
 
+  # Define ${CINDER_PATH} as usual.
+  get_filename_component(CINDER_PATH "${Cinder-ImGui_PROJECT_ROOT}/../.." ABSOLUTE)
+
+  # Make a list of source files and define that to be ${SOURCE_LIST}.
+  file(GLOB SOURCE_LIST CONFIGURE_DEPENDS
+		  "${Cinder-Notifications_PROJECT_ROOT}/src/CinderImGui.cpp"
+		  )
+
   list( APPEND IMGUI_SOURCES
 	${IMGUI_ROOT_PATH}/src/CinderImGui.cpp
 	${IMGUI_ROOT_PATH}/lib/imgui/imgui.cpp
@@ -16,6 +24,7 @@ if( NOT TARGET Cinder-ImGui )
 	)
   
   target_include_directories( Cinder-ImGui PUBLIC "${IMGUI_INCLUDE_DIRS}" )
+  target_include_directories(Cinder-ImGuid SYSTEM BEFORE PUBLIC "${CINDER_PATH}/include" )
 
   if( NOT TARGET cinder )
 	include( "${CINDER_PATH}/proj/cmake/configure.cmake" )
